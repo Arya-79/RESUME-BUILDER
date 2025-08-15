@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive Resume Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./mainpage.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Interactive Resume Builder</h1>
+      <p class="subtitle">Fill the form and see your resume update live</p>
+      <div class="progress" aria-label="Form completion progress">
+        <div class="progress__bar" id="progressBar" style="width: 0%"></div>
+        <span class="progress__label" id="progressLabel">0% complete</span>
+      </div>
+      <div class="template-selector">
+        <label for="templateSelect">Choose a template:</label>
+        <select id="templateSelect">
+          <option value="classic">Classic</option>
+          <option value="modern">Modern</option>
+          <option value="minimal">Minimal</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel form-panel">
+        <form id="resumeForm" autocomplete="on">
+          <fieldset>
+            <legend>Personal Information</legend>
+            <div class="grid two">
+              <label>
+                <span>Name</span>
+                <input type="text" id="name" placeholder="YOUR FULL NAME" />
+              </label>
+              <label>
+                <span>Phone Number</span>
+                <input type="tel" id="phone" placeholder="9156086453" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" id="email" placeholder="abc@example.com" />
+              </label>
+            </div>
+            <label>
+              <span>Profile Summary</span>
+              <textarea id="summary" rows="4" placeholder="Briefly describe your professional background, strengths, and goals."></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Skills</legend>
+            <div class="skills">
+              <div class="skills__choices">
+                <label><input type="checkbox" class="skill-checkbox" value="HTML" /> HTML</label>
+                <label><input type="checkbox" class="skill-checkbox" value="CSS" /> CSS</label>
+                <label><input type="checkbox" class="skill-checkbox" value="JavaScript" /> JavaScript</label>
+                <label><input type="checkbox" class="skill-checkbox" value="React" /> React</label>
+                <label><input type="checkbox" class="skill-checkbox" value="Node.js" /> Node.js</label>
+                <label><input type="checkbox" class="skill-checkbox" value="Python" /> Python</label>
+                <label><input type="checkbox" class="skill-checkbox" value="SQL" /> SQL</label>
+                <label><input type="checkbox" class="skill-checkbox" value="Git" /> Git</label>
+                <label><input type="checkbox" class="skill-checkbox" value="Docker" /> Docker</label>
+              </div>
+              <div class="skills__add">
+                <input type="text" id="customSkillInput" placeholder="Add a custom skill and press Enter" />
+              </div>
+              <div class="skills__chips" id="selectedSkills"></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Education</legend>
+            <div id="educationList" class="dynamic-list"></div>
+            <button type="button" class="button secondary" id="addEducationBtn">+ Add Education</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Experience</legend>
+            <div id="experienceList" class="dynamic-list"></div>
+            <button type="button" class="button secondary" id="addExperienceBtn">+ Add Experience</button>
+          </fieldset>
+
+          <div class="actions">
+            <button type="button" class="button muted" id="clearBtn">Clear Form</button>
+            <div class="spacer"></div>
+            <button type="button" class="button" id="printBtn">Download PDF</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel preview-panel">
+        <div id="resumePreview" class="resume">
+          <header class="resume__header">
+            <h2 id="previewName">Your Name</h2>
+            <p id="previewContact" class="muted">email@example.com • (000) 000-0000</p>
+          </header>
+          <section class="resume__section" id="sectionSummary">
+            <h3>Profile Summary</h3>
+            <p id="previewSummary" class="muted">Write a short, impactful summary that highlights your experience, strengths, and what you are looking for.</p>
+          </section>
+          <section class="resume__section" id="sectionSkills">
+            <h3>Skills</h3>
+            <ul id="previewSkills" class="chips"></ul>
+          </section>
+          <section class="resume__section" id="sectionEducation">
+            <h3>Education</h3>
+            <div id="previewEducation" class="timeline"></div>
+          </section>
+          <section class="resume__section" id="sectionExperience">
+            <h3>Experience</h3>
+            <div id="previewExperience" class="timeline"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="./mainpage.js"></script>
+  </body>
+  </html>
+
+
